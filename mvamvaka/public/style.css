@@ -1,0 +1,106 @@
+
+header {
+	color: blue;
+	background-color: white;
+	clear: left;
+	margin: 0 auto;
+	padding: 0;
+	width: 1200px;
+	text-align: center;
+	font-size: 300%;
+	padding: 0px;
+
+}
+body{
+	background: #17E6D8;
+	margin: 0;
+	padding: 0;
+}
+
+.div1{
+	text-align: left;
+	border: none;
+	font-size: 25px;
+	padding: 1px 0px;
+	width: 100%%;
+}
+
+.div2{
+	text-align: left;
+	border: none;
+	font-size: 15px;
+	padding: 1px 0px;
+	width: 100%%;
+	color: blue;
+	border: 1px solid black;
+}
+
+.div3{
+	text-align: center;
+	width: 1200px;
+	margin: 0 auto;
+	border: none;
+	background: white;
+	padding: 50px;
+}
+
+.textBox{
+	border: 1px solid black;
+	width: 200px;
+	height: 30px;
+	background-color: #F3F3F3;
+}
+
+.table{
+	font-size: 10px;
+	color: black;
+	border-top: 1px solid red;
+	width: 100%;
+}
+
+div{
+	text-align: left;
+	border: 1px solid black;
+	padding: 5px 0px;
+	width: 100%%;
+	
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+.button {
+	background-color: #e3e3e3;
+	border-radius: 0.5em;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+}
+.height300{
+	max-height: 215px;
+}
+
+.height200{
+	max-height: 130px;
+}
+
+.height150{
+	max-height: 90px;
+	max-width: 500px;
+	font-size: 15px;
+}
+
+@keyframes strobe {
+    from {background-color: black;}
+    to {background-color: white;}
+}
+
+.tableBDY{
+	font-size: 10px;
+}
+
+.container-fluid{
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+}

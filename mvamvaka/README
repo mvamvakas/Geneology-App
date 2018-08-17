@@ -1,0 +1,13 @@
+Michael Vamvakas
+Student Number: 0965227
+
+how to run:
+go into the parser directory and hit make to create the dynamic library
+then npm run dev (portNum) to run
+
+
+assumtions and limitations
+- The user needs to log in to the database before the can access the app
+- When printing out values of custom queries allowed to print out the returns
+- Custom query with SELECT already put it stops all commands that don't start with SELECT
+- Assuming alerts are not blocked

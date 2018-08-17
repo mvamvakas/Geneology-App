@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Geneology App</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="CHANGE ME">
+		<meta name="keywords" content="CHANGE ME">
+		<meta name="author" content="CHANGE ME">
+		<!-- Load jquery, bootstrap -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<!-- Custom CSS -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- Custom CSS End -->
+	</head>
+	<body>
+		
+	<div id="login" class="modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Login to the database</h5>
+		  </div>
+		  <div class="modal-body">
+			<input class = "textBox" type="text" placeholder = "username" name = "userName" id="userName">
+			<br>
+			<br>
+			<input class = "textBox" type="password" placeholder = "password" name = "password" id="password">
+			<br>
+			<br>
+			<input class = "textBox" type="text" placeholder = "database" name = "database" id="database">
+		  </div>
+		  <div class="modal-footer" id="loginFoot">
+			<button type="button" class="btn btn-primary" id="loginButt">login</button>
+		  </div>
+		</div>
+	  </div>
+	</div> 
+	
+	<div id="helpModal" class="modal" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Help</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+			
+			<table class="table">
+				FILE Table
+			  <thead class="thead-dark" style="border: 1px solid black">
+				  <tr>
+				  <th scope="col">Field</th>
+				  <th scope="col">Type</th>
+				  <th scope="col">NULL</th>
+				  <th scope="col">KEY</th>
+				  <th scope="col">Default</th>
+				  <th scope="col">Extra</th>
+				</tr>
+			  </thead>
+			
+			  <tbody id="modalFileTable" class="tableBDY">
+			  </tbody>
+			  
+			</table>
+			<table class="table">
+				INDIVIDUAL Table
+			  <thead class="thead-dark" style="border: 1px solid black">
+				  <tr>
+				  <th scope="col">Field</th>
+				  <th scope="col">Type</th>
+				  <th scope="col">NULL</th>
+				  <th scope="col">KEY</th>
+				  <th scope="col">Default</th>
+				  <th scope="col">Extra</th>
+				</tr>
+			  </thead>
+			
+			  <tbody id="modalIndTable" class="tableBDY">
+			  </tbody>
+			  
+			</table>
+			
+			
+		  </div>
+		</div>
+	  </div>
+	</div> 
+	
+	
+
+	
+		<div class="div3">
+			
+		
+			<div class="div1 container-fluid" style="border: none; overflow.x: hidden;">
+				
+				<p>
+					<div class="row" style="border: none;">
+						<div class="col-4" style="border: none; overflow.x: hidden;">
+							<i>
+								Genealogy App
+								<img src="http://miriamsnow.com/genelogo" alt="logo" style="height: 50px; width: 130px;">
+							</i>
+						</div>
+						<div class="col-2" style="border: none; overflow.x: hidden;">
+							<font color="blue" size="5px">
+								Status Panel <br>
+								<button type="button" class="btn" id="statusB">
+									Clear
+								</button>
+								<br>
+							</font>
+						
+						</div>
+						<div class="col-4 height150" id="status" style="overflow.x: hidden;">
+						</div>
+					
+					</div>
+					
+				</p>
+				</div>
+			<div class="div1">
+			
+				<p>
+					<font color="blue">
+						File Log Panel<br>
+					</font>
+				</p>
+			
+			</div>
+			<div class="height200">
+			<table class="table" id="myTable">
+			  <thead class="thead-dark" style="border: 1px solid black">
+				<tr>
+				  <th scope="col">Filename</th>
+				  <th scope="col">Source</th>
+				  <th scope="col">GEDC Version</th>
+				  <th scope="col">Encoding</th>
+				  <th scope="col">Submitter Name</th>
+				  <th scope="col">Submitter Address</th>
+				  <th scope="col">Number of Individuals</th>
+				  <th scope="col">Number of Families</th>
+				</tr>
+			  </thead>
+			
+			  <tbody id="fileTable" class="tableBDY"><!--
+				  <td><a href="" download>file.ged</a></td>
+				  <td>webtreeprint.net</td>
+				  <td>5.5.1</td>
+				  <td>ASCII</td>
+				  <td>Sleve McDichael</td>
+				  <td>123 Street Ave</td>
+				  <td>25</td>
+				  <td>6</td>-->
+			  </tbody>
+			  
+			</table>
+			</div>
+				<div class="div1">
+					<p>
+					<font color="blue">
+						GEDCOM View Panel<br>
+					</font>
+					</p>
+					<select class="selectpicker" style="width: 200px; height:30px; font-size: 15px;" id="fileSelect" onChange="changeGedTable()">
+					</select>
+					
+			<div class="height300">
+					
+		
+			<table class="table">
+			  <thead class="thead-dark" style="border: 1px solid black">
+				<tr>
+				  <th scope="col">Given name</th>
+				  <th scope="col">Surname</th>
+				  <th scope="col">Sex</th>
+				  <th scope="col">Family Size</th>
+				</tr>
+			  </thead>
+			  
+			  <tbody id="viewTable">
+			  </tbody>
+			 
+			</table>
+			</div>
+		</div>
+
+
+						<button id="create" height = 100% class="btn btn-outline-primary" onclick="showCreate()" >Create GEDCOM <span class="sr-only">(current)</span></button>
+
+						<button id="add" height = 100% class="btn btn-outline-secondary" onclick="showAdd()" >Add Individual </button>
+						
+						<button id="upload" height = 100% class="btn btn-outline-success" onclick="showUpload()" >Upload GEDCOM </button>
+						
+						<button id="getD" height = 100% class="btn btn-outline-dark" onclick="showD()" >Get Descendants </button>
+						
+						<button id="getA" height = 100% class="btn btn-outline-info" onclick="showA()" >Get Ascendants </button>
+
+		<!--		  </div>
+				</nav> -->
+			
+
+			<div id="createDiv" style = "padding: 5px; display: none;" class = "div2">
+				<button class="button" id="createGedcom">
+					Create GEDCOM
+				</button>
+				<br>
+				<br>
+				<input class = "textBox" type="text" placeholder = "File Name" id = "fileNameCreate">
+				<input class = "textBox" type="text" placeholder = "Submitter Name" id = "subNameCreate">
+				<input class = "textBox" type="text" placeholder = "Submitter Address" id = "subAddCreate">
+			</div>
+			
+			<div id="addDiv" style="display: none;" class = "div2">
+				<button class="button" id="indButt">
+					Add Individual
+				</button>
+				<br>
+				<br>
+				<select id="addSelect">
+				</select>
+				<input class = "textBox" type="text" placeholder = "Given Name" name = "givenName" id="givenNameAdd">
+				<input class = "textBox" type="text" placeholder = "Surname" name = "surname" id="surNameAdd">
+			</div>
+			<div id="uploadDiv" style="display: none;" class = "div2">
+				<form enctype="multipart/form-data" method="post" id="uploadForm">
+					<label>
+						Upload a GEDCOM file <br>
+					</label>
+					<input style = "padding: 3px 0px;" type="file" name="uploadFile" id="upFile" accept=".ged">
+					<button type="button" id="uploadButt">
+						UploadFile
+					</button>
+					
+					
+				</form>
+				
+			</div>
+			
+			<div id="getDDiv" style="display: none;" class = "div2">
+				<button class="button" id="desButt">
+					Get Descendants
+				</button>
+				<br>
+				<br>
+				<select id="desSelect" onChange="changeDesChoices()">
+				</select>
+				<select id="desChoices">
+				</select>
+				<input class = "textBox" type="text" placeholder = "Max Generations" name = "maxDes" id="maxDes">
+				<div id="desTable" class="div2">
+					<table class="table">
+					<thead class="thead-dark" style="border: 1px solid black">
+					<tr>
+						<th scope="">Generation Number</th>
+						<th scope="">Person</th>
+					</tr>
+					</thead>
+			  
+					<tbody id="desListTable">
+					</tbody>
+					</table>
+				</div>
+			</div>
+		
+			<div id="getADiv" style="display: none;" class = "div2">
+				<button class="button" id="ansButt">
+					Get Ancestors
+				</button>
+				<br>
+				<br>
+				<select id="aSelect" onChange="changeAnsChoices()">
+				</select>
+				<select id="aChoices">
+				</select>
+				<input class = "textBox" type="text" placeholder = "Max Generations" name = "maxAns" id="maxAns">
+				<div id="ansTable" class="div2">
+					<table class="table">
+					<thead class="thead-dark" style="border: 1px solid black">
+					<tr>
+						<th scope="">Generation Number</th>
+						<th scope="">Person</th>
+					</tr>
+					</thead>
+			  
+					<tbody id="ansListTable">
+					</tbody>
+					</table>
+				</div>
+			</div>
+		
+		<div class="div1">
+			<font color="blue">
+				Database<br>
+			</font>
+			<div class="div1" style="text-align: left;">
+				<button type="button" id="storeButt" class="btn btn-outline-primary">Store All Files</button>
+				<button type="button" id="deleteButt" class="btn btn-outline-secondary">Clear All Data</button>
+				<button type="button" id="displayDB" class="btn btn-outline-success">Display DB Status</button>
+				<!--<button type="button" class="btn btn-outline-info">Execute Query</button> -->
+			</div>
+		</div>
+		
+		<div class="div1" id="queryDiv">
+			<select id="queryFiles" style="font-size: 15px;">
+			</select>
+			<select id="queryChoices" style="font-size: 15px;">
+				<option value="ViewBySurname">View all individuals by last name</option>
+				<option value="ViewByFile">Display Individuals from specific File</option>
+				<option value="ViewByMale">Display all males from file sorted by surname</option>
+				<option value="ViewByFemale">Display all females from file sorted by given name</option>
+				<option value="ViewByNotJohn">Display all individuals not named John by family size</option>
+			</select>
+			<button type="button" id="executeQ" class="btn btn-outline-info">Execute Query</button>
+			<button type="button" id="help" class="btn btn-info">Help</button>
+			<br>
+			<label>
+				Custom Query
+			</label>
+			<div class="form-group">
+				<textarea class="form-control" rows="5" id="comment">SELECT
+				</textarea>
+			</div>
+			<button type="button" id="customQ" class="btn btn-dark">Execute Custom Query</button>
+		</div>
+		<label>
+			Results
+		</label>
+		<div style="border: 1px solid black; height: 200px;" class="div1">
+			<table id="displayQuery" class="table">
+			  <tbody class="tableBDY">
+			  </tbody>
+			</table>
+		</div>
+		</div>
+		
+		
+    
+    <!-- Leave me at the bottom of body -->
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
